@@ -1,0 +1,34 @@
+name: Commit Message Validator
+description: Validate commit messages for the APT lab commit format.
+
+inputs:
+  before_sha:
+    description: github.event.before SHA
+    required: true
+  after_sha:
+    description: github.event.after SHA
+    required: true
+  cspell_config_path:
+    description: Optional cspell config path in caller repo (if omitted, default cspell config is used)
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "24"
+
+    - name: Install cspell
+      shell: bash
+      run: npm install -g cspell
+
+    - name: Validate commit messages
+      shell: bash
+      env:
+        BEFORE_SHA: ${{ inputs.before_sha }}
+        AFTER_SHA: ${{ inputs.after_sha }}
+        CSPELL_CONFIG_PATH: ${{ inputs.cspell_config_path }}
+      run: ${{ github.action_path }}/validate.sh
