@@ -51,7 +51,8 @@ check_verb() {
     "modify" "adjust" "enhance" "resolve" "correct" "document"
     "test" "setup" "configure" "initialize" "clean" "format"
     "insert" "split" "center" "scale" "set" "complete" "change"
-    "answer" "introduce" "refine" "link"
+    "answer" "introduce" "refine" "link" "suppress" "switch"
+    "extend"
   )
 
   for verb_item in "${allowed_verbs[@]}"; do
