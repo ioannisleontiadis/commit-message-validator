@@ -52,7 +52,7 @@ check_verb() {
     "test" "setup" "configure" "initialize" "clean" "format"
     "insert" "split" "center" "scale" "set" "complete" "change"
     "answer" "introduce" "refine" "link" "suppress" "switch"
-    "extend"
+    "extend" "integrate"
   )
 
   for verb_item in "${allowed_verbs[@]}"; do
